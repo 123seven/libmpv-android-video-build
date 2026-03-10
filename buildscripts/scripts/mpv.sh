@@ -19,6 +19,7 @@ unset CC CXX # meson wants these unset
 sed -i -e "s/meson.build_options()/''/" meson.build
 
 meson setup $build --cross-file "$prefix_dir"/crossfile.txt \
+	--buildtype=release \
 	--strip \
 	--prefer-static \
 	--default-library shared \
@@ -29,6 +30,7 @@ meson setup $build --cross-file "$prefix_dir"/crossfile.txt \
  	-Dcplayer=false \
 	-Diconv=disabled \
 	-Dvulkan=enabled \
+	-Dandroid-media-ndk=enabled \
  	-Dmanpage-build=disabled
 
 ninja -C $build -j$cores

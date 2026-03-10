@@ -16,6 +16,8 @@ fi
 
 unset CC CXX
 meson setup $build --cross-file "$prefix_dir"/crossfile.txt \
+	--buildtype=release \
+	-Doptimization=3 \
 	-Dvulkan=enabled -Ddemos=false -Dshaderc=enabled -Dlcms=enabled
 
 ninja -C $build -j$cores

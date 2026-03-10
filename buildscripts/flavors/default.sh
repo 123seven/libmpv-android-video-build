@@ -27,7 +27,7 @@ sed -i -e 's/#define FFMPEG_CONFIGURATION.*/#define FFMPEG_CONFIGURATION ""/' ..
 ../configure \
 	--target-os=android --enable-cross-compile --cross-prefix=$ndk_triple- --ar=$AR --cc=$CC --ranlib=$RANLIB \
 	--arch=${ndk_triple%%-*} --cpu=$cpu --pkg-config=pkg-config \
-	--extra-cflags="-I$prefix_dir/include $cpuflags" --extra-ldflags="-L$prefix_dir/lib" \
+	--extra-cflags="-I$prefix_dir/include $cpuflags -ffast-math" --extra-ldflags="-L$prefix_dir/lib" \
 	\
 	--disable-gpl \
 	--disable-nonfree \
@@ -69,6 +69,7 @@ sed -i -e 's/#define FFMPEG_CONFIGURATION.*/#define FFMPEG_CONFIGURATION ""/' ..
 	--enable-hwaccels \
 	--enable-optimizations \
 	--enable-runtime-cpudetect \
+	--enable-fast-unaligned \
 	\
 	--enable-mbedtls \
 	\
