@@ -77,6 +77,8 @@ sed -i -e 's/#define FFMPEG_CONFIGURATION.*/#define FFMPEG_CONFIGURATION ""/' ..
 	\
 	--enable-libxml2 \
 	\
+	--enable-libass \
+	\
 	--enable-avutil \
 	--enable-avcodec \
 	--enable-avfilter \
@@ -130,6 +132,8 @@ sed -i -e 's/#define FFMPEG_CONFIGURATION.*/#define FFMPEG_CONFIGURATION ""/' ..
 	--enable-decoder=pcm* \
 	--enable-decoder=dsd* \
 	--enable-decoder=dca \
+	--enable-decoder=truehd \
+	--enable-decoder=mlp \
 	\
 	--enable-decoder=ssa \
 	--enable-decoder=ass \
@@ -221,6 +225,7 @@ sed -i -e 's/#define FFMPEG_CONFIGURATION.*/#define FFMPEG_CONFIGURATION ""/' ..
 	--enable-parser=tak \
 	--enable-parser=vorbis \
  	--enable-parser=dca \
+	--enable-parser=mlp \
 	\
 	--enable-filter=overlay \
 	--enable-filter=equalizer \
