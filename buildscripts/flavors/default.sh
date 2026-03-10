@@ -134,6 +134,8 @@ sed -i -e 's/#define FFMPEG_CONFIGURATION.*/#define FFMPEG_CONFIGURATION ""/' ..
 	--enable-decoder=dca \
 	--enable-decoder=truehd \
 	--enable-decoder=mlp \
+	--enable-decoder=dts \
+	--enable-decoder=thd \
 	\
 	--enable-decoder=ssa \
 	--enable-decoder=ass \
@@ -226,6 +228,7 @@ sed -i -e 's/#define FFMPEG_CONFIGURATION.*/#define FFMPEG_CONFIGURATION ""/' ..
 	--enable-parser=vorbis \
  	--enable-parser=dca \
 	--enable-parser=mlp \
+	--enable-parser=truehd \
 	\
 	--enable-filter=overlay \
 	--enable-filter=equalizer \
