@@ -21,7 +21,7 @@ cd _build$ndk_suffix
 	CFLAGS="-fPIC -O3" CXXFLAGS="-fPIC -O3" \
 	--host=$ndk_triple \
 	--with-pic \
-	--enable-asm \
+	--disable-asm \
 	--enable-static\
 	--disable-shared \
 	--disable-require-system-font-provider
