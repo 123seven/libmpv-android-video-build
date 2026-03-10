@@ -18,10 +18,10 @@ mkdir -p _build$ndk_suffix
 cd _build$ndk_suffix
 
 ../configure \
-	CFLAGS=-fPIC CXXFLAGS=-fPIC \
+	CFLAGS="-fPIC -O3" CXXFLAGS="-fPIC -O3" \
 	--host=$ndk_triple \
 	--with-pic \
-	--disable-asm \
+	--enable-asm \
 	--enable-static\
 	--disable-shared \
 	--disable-require-system-font-provider

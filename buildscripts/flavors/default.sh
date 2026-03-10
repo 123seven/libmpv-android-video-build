@@ -21,7 +21,7 @@ cpu=armv7-a
 [[ "$ndk_triple" == "i686"* ]] && cpu="i686 --disable-asm"
 
 cpuflags=
-[[ "$ndk_triple" == "arm"* ]] && cpuflags="$cpuflags -mfpu=neon -mcpu=cortex-a8"
+[[ "$ndk_triple" == "arm"* ]] && cpuflags="$cpuflags -mfpu=neon -mcpu=cortex-a8 -mfloat-abi=softfp"
 
 sed -i -e 's/#define FFMPEG_CONFIGURATION.*/#define FFMPEG_CONFIGURATION ""/' ../configure
 ../configure \
@@ -134,6 +134,7 @@ sed -i -e 's/#define FFMPEG_CONFIGURATION.*/#define FFMPEG_CONFIGURATION ""/' ..
 	--enable-decoder=ass \
 	--enable-decoder=dvbsub \
 	--enable-decoder=dvdsub \
+	--enable-decoder=pgssub \
 	--enable-decoder=srt \
 	--enable-decoder=stl \
 	--enable-decoder=subrip \
@@ -222,6 +223,8 @@ sed -i -e 's/#define FFMPEG_CONFIGURATION.*/#define FFMPEG_CONFIGURATION ""/' ..
 	\
 	--enable-filter=overlay \
 	--enable-filter=equalizer \
+	--enable-filter=subtitles \
+	--enable-filter=ass \
 	\
 	--enable-protocol=async \
 	--enable-protocol=cache \
