@@ -78,7 +78,7 @@ jobs:
       - uses: softprops/action-gh-release@v1
         if: github.ref == 'refs/heads/main' || inputs.release == true
         with:
-          draft: true
+          draft: ${{ github.event_name != 'workflow_dispatch' || !inputs.release }}
           prerelease: false
           tag_name: "vnext"
           files: |
