@@ -6,6 +6,14 @@ on:
       - main
   workflow_dispatch:
     inputs:
+      flavor:
+        description: 'Build flavor'
+        required: true
+        type: choice
+        options:
+          - default
+          - full
+        default: 'default'
       logLevel:
         description: 'Log level'
         required: true
@@ -52,15 +60,17 @@ jobs:
         run: |
           mkdir sdk
           ln -s ${ANDROID_HOME} ./sdk/android-sdk-linux
-      - name: Bundle (default)
+      - name: Bundle
         working-directory: ./buildscripts
         run: |
           sed -i -e 's/sudo//g' *.sh
           sed -i 's/download-sdk\.sh/download-sdk-debian\.sh/g' download.sh
           sed -i -e '/git reset --hard/d' patch.sh
           sudo chmod +x include/download-sdk-debian.sh
-          sudo chmod +x bundle_default.sh
-          ./bundle_default.sh
+          flavor="${{ github.event.inputs.flavor || 'default' }}"
+          script="bundle_${flavor}.sh"
+          sudo chmod +x "$script"
+          ./"$script"
       - uses: actions/upload-artifact@v4
         with:
           name: artifact
