@@ -23,6 +23,11 @@ on:
         required: false
         type: boolean
         default: false
+      tag:
+        description: 'Release tag name'
+        required: false
+        type: string
+        default: 'vnext'
   pull_request:
 
 permissions:
@@ -80,6 +85,6 @@ jobs:
         with:
           draft: ${{ github.event_name != 'workflow_dispatch' || !inputs.release }}
           prerelease: false
-          tag_name: "vnext"
+          tag_name: ${{ inputs.tag || 'vnext' }}
           files: |
             /home/runner/work/libmpv-android-video-build/libmpv-android-video-build/buildscripts/*.jar
